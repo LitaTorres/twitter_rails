@@ -16,6 +16,9 @@
         <%= link_to "Show this tweet", tweet %>
       </p>
     <% end %>
+    
+    <%= raw pagy_nav(@pagy) %> <!-- no olvidar para mostrar la paginación-->
+
   <% else %> <!-- en caso contrario -->
       <h1> No existen coincidencias </h1>
   <% end %>
@@ -23,3 +26,4 @@
 </div>
 
 <%= link_to "New tweet", new_tweet_path %>
+
