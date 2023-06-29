@@ -2,13 +2,24 @@
 
 <h1>Tweets</h1>
 
+<%= form_with url: tweets_path, method: :get do |form| %>
+    <%= form.text_field :query_text, value: params[:query_text] %>
+    <%= form.submit %>
+<% end %>
+
 <div id="tweets">
-  <% @tweets.each do |tweet| %>
-    <%= render tweet %>
-    <p>
-      <%= link_to "Show this tweet", tweet %>
-    </p>
+
+  <% if @tweets.count > 0 %> <!-- linea agregada al final x si no existen coincidencias-->
+    <% @tweets.each do |tweet| %>
+      <%= render tweet %>
+      <p>
+        <%= link_to "Show this tweet", tweet %>
+      </p>
+    <% end %>
+  <% else %> <!-- en caso contrario -->
+      <h1> No existen coincidencias </h1>
   <% end %>
+
 </div>
 
 <%= link_to "New tweet", new_tweet_path %>
